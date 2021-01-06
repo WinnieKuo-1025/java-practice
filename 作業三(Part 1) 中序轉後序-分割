@@ -1,0 +1,46 @@
+import java.util.*;    
+import java.lang.*;    
+import java.text.ParseException;    
+import java.util.Vector;    
+    
+public class Main{    
+    public static void main(String[] args){    
+        String s;    
+        Scanner sc = new Scanner(System.in);    
+        while(sc.hasNext()){    
+            s=sc.nextLine();    
+            StringTokenizer token = new StringTokenizer(s, "+-*/()%",true);    
+            String[] output = new String[100];    
+            int count=0;    
+            double sum=0;    
+            double adder;    
+            Vector<String>  num=new Vector<String>();    
+            Vector<String>  op=new Vector<String>();    
+            while(token.hasMoreTokens()){    
+                output[count]=token.nextToken();    
+                count++;    
+            }    
+            for(int i=0;i<count;i++){    
+                if(output[i].equals("+")||output[i].equals("-")||output[i].equals("*")||output[i].equals("/")||output[i].equals("(")||output[i].equals(")")||output[i].equals("%")){    
+                    op.addElement(output[i]);    
+                }else{    
+                    num.addElement(output[i]);    
+                }    
+            }    
+            for(int j=0;j<num.size()-1;j++){    
+                System.out.print(num.get(j) + " ");    
+            }    
+            System.out.println(num.lastElement());    
+            for(int j=0;j<op.size()-1;j++){    
+                System.out.print(op.get(j) + " ");    
+            }    
+            System.out.println(op.lastElement());    
+            for(int j=0;j<num.size();j++){    
+                String temp=String.valueOf(num.get(j));    
+                adder=Double.parseDouble(temp);    
+                sum=sum+adder;    
+            }    
+            System.out.printf("%.3f\n",sum);    
+        }    
+    }    
+}  
