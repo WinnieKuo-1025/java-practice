@@ -1,0 +1,95 @@
+import java.lang.*;         
+import java.text.ParseException;         
+import java.util.*;     
+      
+public class Main{         
+    public static void main(String[] args){         
+        String s;         
+        Scanner sc = new Scanner(System.in);            
+        s=sc.nextLine();         
+        StringTokenizer token = new StringTokenizer(s, "+-*/()%",true);         
+        String[] output = new String[1000];         
+        int count=0;         
+        Stack<String> st = new Stack<String>();     
+        Stack<Integer> record = new Stack<Integer>();     
+        String temp=new String();     
+        int isp,icp;           
+        while(token.hasMoreTokens()){         
+            output[count]=token.nextToken();         
+            count++;         
+        }      
+        for(int i=0;i<count;i++){     
+            if(record.empty()){     
+                isp=0;     
+            }  
+            else{     
+                isp=Integer.parseInt(String.valueOf(record.peek()));     
+            }     
+            if(output[i].equals(")")){     
+                while(!st.peek().equals("(")){     
+                    temp=String.valueOf(st.pop());     
+                    record.pop();     
+                    System.out.printf("%s ",temp);     
+                }     
+                if(st.peek().equals("(")){     
+                    st.pop();     
+                    record.pop();     
+                }     
+            }     
+            else if(output[i].equals("(")){     
+                st.push(output[i]);     
+                record.push(1);     
+            }     
+            else if(output[i].equals("*") || output[i].equals("/") || output[i].equals("%")){     
+                icp=3;     
+                while(isp>=icp){     
+                    temp=String.valueOf(st.pop());     
+                    record.pop();     
+                    System.out.printf("%s ",temp);     
+                    if(!record.empty()){     
+                        isp=Integer.parseInt(String.valueOf(record.peek()));     
+                    }  
+                    else{     
+                        isp=0;     
+                    }     
+                }     
+                if(isp<icp){     
+                    st.push(output[i]);     
+                    record.push(icp);     
+                }     
+            }     
+            else if(output[i].equals("+") || output[i].equals("-")){     
+                icp=2;     
+                while(isp>=icp){     
+                    temp=String.valueOf(st.pop());     
+                    record.pop();     
+                    System.out.printf("%s ",temp);     
+                    if(!record.empty()){     
+                        isp=Integer.parseInt(String.valueOf(record.peek()));     
+                    }  
+                    else{     
+                        isp=0;     
+                    }     
+                }     
+                if(isp<icp){     
+                    st.push(output[i]);     
+                    record.push(icp);     
+                }     
+            }  
+            else{     
+                System.out.printf("%s ",output[i]);     
+            }     
+        }     
+        while(!st.empty()){     
+            temp=String.valueOf(st.pop());       
+            System.out.printf("%s ",temp);     
+        }     
+        System.out.printf("\n");     
+        while(!st.empty()){     
+            st.pop();     
+        }      
+        while(!record.empty()){     
+            record.pop();     
+        }        
+    }           
+}  
