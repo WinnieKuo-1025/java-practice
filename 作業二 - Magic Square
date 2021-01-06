@@ -1,0 +1,74 @@
+import java.util.Scanner;  
+  
+public class Main{  
+    public static void main(String[] argv){  
+        int[][] mq = new int[105][105];  
+        int n;  
+        int row,column;  
+        Scanner scanner = new Scanner(System.in);  
+        int temp=1;  
+        while(scanner.hasNext())  
+        {  
+            if(temp==0)  
+            {  
+                System.out.print("\n");  
+            }  
+            //System.out.print("\n");//  
+            n=scanner.nextInt();  
+            if(n%2==0)  
+            {  
+                System.out.println("It is not an odd number.");  
+            }  
+            row=n;  
+            column=(n/2)+1;  
+            mq[row-1][column-1]=1;  
+            int sum=0;  
+            row++;  
+            row=row-n;  
+            column++;  
+            for(int count=2;count<=n*n;count++)  
+            {  
+                if(count%n!=0)  
+                {  
+                    mq[row-1][column-1]=count;  
+                    row++;  
+                    column++;  
+                    if(row>n)  
+                    {  
+                        row=row-n;  
+                    }  
+                    if(column>n)  
+                    {  
+                        column=column-n;  
+                    }  
+            }  
+            else  
+            {  
+                mq[row-1][column-1]=count;  
+                row--;  
+                if(row<1)  
+                {  
+                    row=row+n;  
+                }  
+            }  
+            temp=0;  
+        }  
+        if(n%2!=0)  
+        {  
+            for(int i=0;i<n;i++)  
+            {  
+            sum=sum+mq[i][0];  
+            }  
+            System.out.println(sum);  
+            for(int i=0;i<n;i++)  
+            {  
+                for(int j=0;j<n;j++)  
+                {  
+                    System.out.printf("%5d",mq[i][j]);  
+                }  
+                System.out.print("\n");  
+            }  
+        }  
+    }  
+}  
+}
