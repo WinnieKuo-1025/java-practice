@@ -1,0 +1,29 @@
+import java.util.Scanner;  
+import java.util.Vector;  
+  
+public class Main{  
+    public static void main(String[] args){  
+        int n;  
+        Scanner scanner = new Scanner(System.in);  
+        while(scanner.hasNext())  
+        {  
+            n=scanner.nextInt();  
+            Vector v = new Vector();  
+            int i=2;  
+            while(n/i>=1)  
+            {  
+                while(n%i==0)  
+                {  
+                    n=n/i;  
+                    v.add(i);  
+                }  
+                i++;  
+            }  
+            for(int j=0;j<v.size()-1;j++)  
+            {  
+                System.out.print(v.get(j) + " ");  
+            }  
+            System.out.println(v.lastElement());  
+        }  
+    }  
+}
