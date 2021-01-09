@@ -1,0 +1,87 @@
+import java.lang.*;
+import java.util.*;
+import java.math.*;
+import java.awt.geom.Point2D;
+
+
+class Triangle{
+	Point2D p1;
+	Point2D p2;
+	Point2D p3;
+	double a;
+	double b;
+	double c;
+
+	public static void printline(double a,double b,double c)
+	{
+		double temp; 
+		if(b<a)
+		{
+			temp=a;
+			a=b;
+			b=temp;
+		}
+		if(c<a)
+		{
+			temp=a;
+			a=c;
+			c=temp;
+		}
+		if(c<b)
+		{
+			temp=b;
+			b=c;
+			c=temp;
+		}
+		if(a+b>c)
+		{
+			System.out.printf("%.3f %.3f %.3f ",a,b,c);
+			System.out.printf("%.3f\n",getarea(a,b,c));
+		}
+		else
+		{
+			System.out.printf("Just Line!\n");
+		}
+		
+	}
+
+	public static double getarea(double a,double b,double c){
+		double area;
+		double s;
+		s=(a+b+c)/2;
+		area=Math.sqrt(s*(s-a)*(s-b)*(s-c));
+		return area;
+	}
+}
+
+class Point{  
+    public static double dis(Point2D p1,Point2D p2){  
+        double d=p1.distance(p2);
+        return d;  
+    }  
+}  
+
+public class Main{
+	public static void main(String[] args){
+		Scanner sc=new Scanner(System.in);
+		int cases;
+		Triangle t=new Triangle();
+		Point p=new Point();
+		cases=sc.nextInt();
+		for(int i=0;i<cases;i++){
+			double x1=sc.nextDouble();
+			double y1=sc.nextDouble();
+			double x2=sc.nextDouble();
+			double y2=sc.nextDouble();
+			double x3=sc.nextDouble();
+			double y3=sc.nextDouble();
+		    t.p1=new Point2D.Double(x1,y1);
+		    t.p2=new Point2D.Double(x2,y2);
+		    t.p3=new Point2D.Double(x3,y3);
+		    t.a=p.dis(t.p1,t.p2);
+		    t.b=p.dis(t.p3,t.p2);
+		    t.c=p.dis(t.p1,t.p3);
+		    t.printline(t.a,t.b,t.c);
+		}
+	}
+}
