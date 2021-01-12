@@ -1,0 +1,20 @@
+import java.lang.*;              
+import java.util.*;  
+  
+public class Main{  
+    public static void main(String[] argv){  
+        int num;  
+        Scanner sc = new Scanner(System.in);  
+        num=sc.nextInt();  
+        sc.nextLine();  
+        for(int k=0;k<num;k++){  
+            String s=sc.nextLine();  
+            String brs=sc.nextLine();  
+            String ps=sc.nextLine();  
+            s=s.replaceAll(brs,ps);  
+            StringBuilder rs = new StringBuilder(s);  
+            rs.reverse();  
+            System.out.println(rs);  
+        }  
+    }  
+} 
