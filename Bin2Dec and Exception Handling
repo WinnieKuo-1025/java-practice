@@ -1,0 +1,40 @@
+import java.util.*;  
+import java.lang.*;
+
+public class Main{  
+    public static void main(String[] argv){  
+    	Scanner sc=new Scanner(System.in);
+    	while(sc.hasNext()){
+    		Vector <Integer> v=new Vector<Integer>();
+    		int n=1;
+    		while(n!=0){
+                n=sc.nextInt();
+                if(n!=0){
+                    v.add(n);
+                }
+    		}
+    		Collections.sort(v);
+    		Deque<Integer> d = new ArrayDeque<Integer>(1000);
+    		for(int i=0;i<v.size();i++){
+                int indeque=v.get(i);
+    			if(indeque%2==0){
+    				d.addLast(indeque);
+    			}
+    			else if(indeque%2!=0){
+    				d.addFirst(indeque);
+    			}
+    		}
+    		int out;
+            int dsize=d.size();
+    		for(int i=0;i<dsize-1;i++){
+    			out=d.removeFirst();
+    			System.out.print(out);
+    			System.out.print(" ");
+    		}
+    		out=d.removeFirst();
+    		System.out.println(out);
+    		v.clear();
+    		d.clear();
+    	}
+    }  
+}
