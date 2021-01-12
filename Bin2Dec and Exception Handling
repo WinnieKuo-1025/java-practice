@@ -1,0 +1,52 @@
+import java.util.*;    
+import java.lang.*;  
+  
+class MyNumberFormatException extends Exception  
+{  
+  
+}  
+  
+  
+public class Main{    
+    public static void main(String[] argv){    
+        Scanner sc=new Scanner(System.in);  
+        String s;  
+        while(sc.hasNext())  
+        {  
+            s=sc.nextLine();  
+            try  
+            {  
+                int flag=1;  
+                for(int i=s.length()-1;i>=0;i--)  
+                {  
+                    char c=s.charAt(i);  
+                    if(c!='0'&&c!='1')  
+                    {  
+                        flag=0;  
+                        throw new MyNumberFormatException();  
+                    }  
+                    else  
+                    {  
+                        continue;  
+                    }  
+                }  
+                if(flag==1)  
+                {  
+                    double count=0;  
+                    double sum=0;  
+                    for(int i=s.length()-1;i>=0;i--)  
+                    {  
+                        char c=s.charAt(i);  
+                        sum=sum+Math.pow(2,count)*Character.getNumericValue(c);  
+                        count++;  
+                    }  
+                    System.out.printf("%.0f\n",sum);  
+                }  
+            }  
+            catch(MyNumberFormatException e)  
+            {  
+                System.out.println("Incorrect Binary Format");  
+            }  
+        }  
+    }    
+} 
