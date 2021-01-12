@@ -1,0 +1,59 @@
+import java.lang.*;              
+import java.util.*;  
+  
+public class Main{  
+    public static void main(String[] argv){  
+        int cases;  
+        Scanner sc = new Scanner(System.in);  
+        cases=sc.nextInt();  
+        for(int c=0;c<cases;c++)  
+        {  
+            if(c!=0)  
+            {  
+                System.out.printf("\n");  
+            }  
+            int arow=sc.nextInt();  
+            int acolumn=sc.nextInt();  
+            int[][] a=new int[arow][acolumn];  
+            for(int i=0;i<arow;i++)  
+            {  
+                for(int j=0;j<acolumn;j++)  
+                {  
+                    a[i][j]=sc.nextInt();  
+                }  
+            }  
+            int brow=sc.nextInt();  
+            int bcolumn=sc.nextInt();  
+            int[][] b=new int[brow][bcolumn];  
+            for(int i=0;i<brow;i++)  
+            {  
+                for(int j=0;j<bcolumn;j++)  
+                {  
+                    b[i][j]=sc.nextInt();  
+                }  
+            }  
+            int[][] newarray=new int[arow][bcolumn];  
+            for(int i=0;i<arow;i++)  
+            {  
+                for(int j=0;j<bcolumn;j++)  
+                {  
+                    for(int k=0;k<brow;k++)  
+                    {  
+                        newarray[i][j]=newarray[i][j]+a[i][k]*b[k][j];  
+                    }  
+                    //System.out.printf("%d ",newarray[i][j]);//  
+                }  
+                //System.out.printf("\n");//  
+            }  
+            for(int i=0;i<arow;i++)  
+            {  
+                for(int j=0;j<bcolumn-1;j++)  
+                {  
+                    System.out.printf("%d ",newarray[i][j]);  
+                }  
+                System.out.printf("%d\n",newarray[i][bcolumn-1]);  
+            }  
+            //System.out.printf("\n");//  
+        }  
+    }  
+} 
