@@ -1,0 +1,128 @@
+import java.util.*;  
+import java.lang.Math;  
+  
+class Complex{  
+    double a,b,c,d;  
+    public void add(double a,double b,double c,double d)  
+    {  
+        double aa,bb;  
+        aa=a+c;  
+        bb=b+d;  
+        if(aa!=0&&bb!=0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) + (%.4f + %.4fi) = %.4f + %.4fi\n",a,b,c,d,aa,bb);  
+        }  
+        else if(aa==0&&bb!=0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) + (%.4f + %.4fi) = %.4fi\n",a,b,c,d,bb);  
+        }  
+        else if(aa!=0&&bb==0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) + (%.4f + %.4fi) = %.4f\n",a,b,c,d,aa);  
+        }  
+        else  
+        {  
+            System.out.printf("(%.4f + %.4fi) + (%.4f + %.4fi) = 0\n",a,b,c,d);  
+        }  
+    }  
+    public void substract(double a,double b,double c,double d)  
+    {  
+        double aa,bb;  
+        aa=a-c;  
+        bb=b-d;  
+        if(aa!=0&&bb!=0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) - (%.4f + %.4fi) = %.4f + %.4fi\n",a,b,c,d,aa,bb);  
+        }  
+        else if(aa==0&&bb!=0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) - (%.4f + %.4fi) = %.4fi\n",a,b,c,d,bb);  
+        }  
+        else if(aa!=0&&bb==0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) - (%.4f + %.4fi) = %.4f\n",a,b,c,d,aa);  
+        }  
+        else  
+        {  
+            System.out.printf("(%.4f + %.4fi) - (%.4f + %.4fi) = 0\n",a,b,c,d);  
+        }  
+    }  
+    public void multiply(double a,double b,double c,double d)  
+    {  
+        double aa,bb;  
+        aa=a*c-b*d;  
+        bb=b*c+a*d;  
+        if(aa!=0&&bb!=0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) * (%.4f + %.4fi) = %.4f + %.4fi\n",a,b,c,d,aa,bb);  
+        }  
+        else if(aa==0&&bb!=0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) * (%.4f + %.4fi) = %.4fi\n",a,b,c,d,bb);  
+        }  
+        else if(aa!=0&&bb==0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) * (%.4f + %.4fi) = %.4f\n",a,b,c,d,aa);  
+        }  
+        else  
+        {  
+            System.out.printf("(%.4f + %.4fi) * ( %.4f + %.4fi) = 0\n",a,b,c,d);  
+        }  
+    }  
+    public void divide(double a,double b,double c,double d)  
+    {  
+        double aa,bb;  
+        aa=(a*c + b*d)/(c*c + d*d);  
+        bb=(b*c - a*d)/(c*c + d*d);  
+  
+        if(aa!=0&&bb!=0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) / (%.4f + %.4fi) = %.4f + %.4fi\n",a,b,c,d,aa,bb);  
+        }  
+        else if(aa==0&&bb!=0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) / (%.4f + %.4fi) = %.4fi\n",a,b,c,d,bb);  
+        }  
+        else if(aa!=0&&bb==0)  
+        {  
+            System.out.printf("(%.4f + %.4fi) / (%.4f + %.4fi) = %.4f\n",a,b,c,d,aa);  
+        }  
+        else  
+        {  
+            System.out.printf("(%.4f + %.4fi) / (%.4f + %.4fi) = 0\n",a,b,c,d);  
+        }  
+    }  
+    public void abs(double a,double b)  
+    {  
+        double aa,bb,absans;  
+        absans=a*a+b*b;  
+        absans=Math.sqrt(absans);  
+        System.out.printf("|%.4f + %.4fi| = %.4f\n",a,b,absans);  
+    }  
+}  
+  
+public class Main{  
+    public static void main(String[] args){  
+        double a,b,c,d;  
+        Complex com=new Complex();  
+        Scanner sc=new Scanner(System.in);  
+        int check=0;  
+        while(sc.hasNext())  
+        {  
+            if(check==1)  
+            {  
+                System.out.print("\n");  
+            }  
+            a=sc.nextDouble();  
+            b=sc.nextDouble();  
+            c=sc.nextDouble();  
+            d=sc.nextDouble();  
+            com.add(a,b,c,d);  
+            com.substract(a,b,c,d);  
+            com.multiply(a,b,c,d);  
+            com.divide(a,b,c,d);  
+            com.abs(a,b);  
+            check=1;  
+        }  
+    }  
+}
